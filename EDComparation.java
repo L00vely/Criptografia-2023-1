@@ -1,4 +1,3 @@
-
 import java.security.Key;
 import java.util.ArrayList;
 
@@ -12,8 +11,8 @@ import java.util.ArrayList;
  *
  * @author JEREMY
  */
-public class Compare {
-    public static void compareEncrypt(){
+public class EDComparation {
+    public static void compareEncryptDecrypt(){
         try {
             
             //Definiendo los vectores de prueba
@@ -23,8 +22,6 @@ public class Compare {
             String vector4 = "El profesor dijo que el examen será el próximo lunes"; //Cadena de 52 caracteres
             String vector5 = "El último libro que leí se llama El gran Gatsby y trata sobre la vida de un hombre en los años 20 en Estados Unidos."; //Cadena con 116 caracteres
             String vector6 = "Aunque el teléfono móvil que compré hace un mes ya no funciona, estoy muy contento de haber tomado la decisión de comprar uno nuevo. Después de todo, un teléfono móvil es una herramienta muy importante en nuestra vida diaria"; //Cadena con 224 caracteres
-            
-            //System.out.println("Longitud 1: " + vector1.length());
             
             //Definición de variables para medir el tiempo
             long startTime; //variable para almacenar el tiempo inicial
@@ -79,7 +76,7 @@ public class Compare {
             byte[] decryptedBytes; //variable para almacenar el texto descifrado en bytes.
             
             //Registros para la tabla
-            ArrayList<Registro> registros= new ArrayList<>();
+            ArrayList<EDRegistro> registros= new ArrayList<>();
             
             
             /*
@@ -366,14 +363,14 @@ public class Compare {
             //System.out.println("Tiempo de cifrado vector 6: " + timeCInterval6 + " [ns]");             
             
             //Resultados Cifrado
-            Table.registros.add(new Registro("Vector 1", timeCInterval1, timeCInterval7, timeCInterval13));
-            Table.registros.add(new Registro("Vector 2", timeCInterval2, timeCInterval8, timeCInterval14));
-            Table.registros.add(new Registro("Vector 3", timeCInterval3, timeCInterval9, timeCInterval15));
-            Table.registros.add(new Registro("Vector 4", timeCInterval4, timeCInterval10, timeCInterval16));
-            Table.registros.add(new Registro("Vector 5", timeCInterval5, timeCInterval11, timeCInterval17));
-            Table.registros.add(new Registro("Vector 6", timeCInterval6, timeCInterval12, timeCInterval18));
-            Table.printTable("Tiempo de Cifrado");
-            Table.registros.clear();
+            EDTable.registros.add(new EDRegistro("Vector 1", timeCInterval1, timeCInterval7, timeCInterval13));
+            EDTable.registros.add(new EDRegistro("Vector 2", timeCInterval2, timeCInterval8, timeCInterval14));
+            EDTable.registros.add(new EDRegistro("Vector 3", timeCInterval3, timeCInterval9, timeCInterval15));
+            EDTable.registros.add(new EDRegistro("Vector 4", timeCInterval4, timeCInterval10, timeCInterval16));
+            EDTable.registros.add(new EDRegistro("Vector 5", timeCInterval5, timeCInterval11, timeCInterval17));
+            EDTable.registros.add(new EDRegistro("Vector 6", timeCInterval6, timeCInterval12, timeCInterval18));
+            EDTable.printTable("Encryption time");
+            EDTable.registros.clear();
             
             //Prueba descifrado primer vector
             // Descifra el texto utilizando la clave y el IV
@@ -418,18 +415,17 @@ public class Compare {
             timeDInterval18 = endTime-startTime;
             
             //Resultados Descifrado            
-            Table.registros.add(new Registro("Vector 1", timeDInterval1, timeDInterval7, timeDInterval13));
-            Table.registros.add(new Registro("Vector 2", timeDInterval2, timeDInterval8, timeDInterval14));
-            Table.registros.add(new Registro("Vector 3", timeDInterval3, timeDInterval9, timeDInterval15));
-            Table.registros.add(new Registro("Vector 4", timeDInterval4, timeDInterval10, timeDInterval16));
-            Table.registros.add(new Registro("Vector 5", timeDInterval5, timeDInterval11, timeDInterval17));
-            Table.registros.add(new Registro("Vector 6", timeDInterval6, timeDInterval12, timeDInterval18));
-            Table.printTable("Tiempo de Descifrado");
-            Table.registros.clear();
-            
-       } catch (Exception e){
-           e.printStackTrace();
-       }
-    
+            EDTable.registros.add(new EDRegistro("Vector 1", timeDInterval1, timeDInterval7, timeDInterval13));
+            EDTable.registros.add(new EDRegistro("Vector 2", timeDInterval2, timeDInterval8, timeDInterval14));
+            EDTable.registros.add(new EDRegistro("Vector 3", timeDInterval3, timeDInterval9, timeDInterval15));
+            EDTable.registros.add(new EDRegistro("Vector 4", timeDInterval4, timeDInterval10, timeDInterval16));
+            EDTable.registros.add(new EDRegistro("Vector 5", timeDInterval5, timeDInterval11, timeDInterval17));
+            EDTable.registros.add(new EDRegistro("Vector 6", timeDInterval6, timeDInterval12, timeDInterval18));
+            EDTable.printTable("Decryption time");
+            EDTable.registros.clear();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+     
     }    
-}
+ }

@@ -12,9 +12,9 @@ import java.util.Formatter;
  *
  * @author JEREMY
  */
-public class Table {
+public class EDTable {
     
-    public static ArrayList<Registro> registros= new ArrayList<>();
+    public static ArrayList<EDRegistro> registros= new ArrayList<>();
     
     public static void printTable(String title){
         
@@ -39,7 +39,7 @@ public class Table {
         formateador.format("|%-20s|%20s|%20s|%20s|%n", "--------------------", "--------------------", "--------------------", "--------------------", "--------------------");
 
         // Recorrer la lista de personas e imprimir cada una
-        for (Registro registro : registros) {
+        for (EDRegistro registro : registros) {
             formateador.format("|%-20s|%20d|%20d|%20d|%n", registro.vector, registro.timeChacha20, registro.timeAESECB, registro.timeAESCBC);
         }
 

@@ -15,40 +15,41 @@ public class main {
         while (opcion != 4) {
         // Mostramos las opciones del menú
         System.out.println("+-------+----------------------------------------------+");
-        System.out.println("| Opción|                Descripción                   |");
+        System.out.println("| Option|                Description                  |");
         System.out.println("+-------+----------------------------------------------+");
-        System.out.println("|   1   | Algoritmos de Cifrado/Descifrado             |");
-        System.out.println("|   2   | Algoritmos de Hash                           |");
-        System.out.println("|   3   | Algoritmos de Firma                          |");
-        System.out.println("|   4   | Salir                                        |");
+        System.out.println("|   1   | Encryption / decryption algorithms          |");
+        System.out.println("|   2   | Hashing algorithms                          |");
+        System.out.println("|   3   | Signing algorithms                          |");
+        System.out.println("|   4   | Exit                                        |");
         System.out.println("+-------+----------------------------------------------+");
 
         // Leemos la opción del usuario
-        System.out.print("Selecciona el tipo de algoritmo que quieres comparar: ");
+        System.out.print("Please select the type of algorithm to compare: ");
         opcion = scanner.nextInt();
 
         // Ejecutamos la opción seleccionada
         switch (opcion){
             case 1:
-                System.out.println("Algoritmos de Cifrado/Descifrado");
-                Compare.compareEncrypt();
+                System.out.println("Encryption / decryption algorithms");
+                EDComparation.compareEncryptDecrypt();
                 break;
             case 2:
-                System.out.println("Algoritmos de Hash");
+                System.out.println("Hashing algorithms");
+                HashComparation.compareHash();
                 break;
             case 3:
-                System.out.println("Algoritmos de Firma");
+                System.out.println("Signing algorithms");
                 break;
             case 4:
-                System.out.println("Salir...");
+                System.out.println("Finishing...");
                 break;                
             default:
-                System.out.println("Opción inválida");
+                System.out.println("Invalid option, please try again.");
                 break;
         }
     }
     // Cerramos el scanner
-    scanner.close();
+        scanner.close();
        
     }
 
