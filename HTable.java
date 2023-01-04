@@ -18,7 +18,7 @@ public class HTable {
     
     public static void printTable(String title){
         
-        int spaces = (83-title.length()) / 2;
+        int spaces = (104-title.length()) / 2;
         
         Formatter formateador = new Formatter();
         
