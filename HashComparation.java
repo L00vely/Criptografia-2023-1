@@ -50,11 +50,7 @@ public class HashComparation {
             long timeHInterval21; //variable para almacenar la diferencia de tiempo del hash
             long timeHInterval22; //variable para almacenar la diferencia de tiempo del hash
             long timeHInterval23; //variable para almacenar la diferencia de tiempo del hash
-            long timeHInterval24; //variable para almacenar la diferencia de tiempo del hash
-            
-            //Registros para la tabla
-            ArrayList<HRegistro> registros= new ArrayList<>();
-            
+            long timeHInterval24; //variable para almacenar la diferencia de tiempo del hash                      
             
             /*
             ####################################################
