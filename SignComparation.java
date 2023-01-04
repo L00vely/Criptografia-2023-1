@@ -52,6 +52,73 @@ public class SignComparation {
             long timeSInterval23; //variable para almacenar la diferencia de tiempo de firma
             long timeSInterval24; //variable para almacenar la diferencia de tiempo de firma
                         
+                        
+            
+            /*
+            ####################################################
+            #                     RSA_PSS                      #
+            #                                                  #
+            ####################################################
+            */
+                       
+            RSA_PSS signerRSAPSS = new RSA_PSS();
+            String signature = null;
+            boolean isValid = false;
+            //Prueba firma primer vector
+            // Obtenemos la firma con RSA PSS
+            startTime = System.nanoTime();
+            signature = signerRSAPSS.sign(vector1);
+            endTime = System.nanoTime();
+            timeSInterval7 = endTime-startTime;
+            isValid = signerRSAPSS.verify(vector1, signature);
+            System.out.println(isValid);  // Imprime "true"
+            
+            //Prueba firma segundo vector
+            // Obtenemos la firma con RSA PSS
+            startTime = System.nanoTime();
+            signature = signerRSAPSS.sign(vector2);
+            endTime = System.nanoTime();
+            timeSInterval8 = endTime-startTime;
+            isValid = signerRSAPSS.verify(vector2, signature);
+            System.out.println(isValid);  // Imprime "true"
+            
+            //Prueba firma tercer vector
+            // Obtenemos la firma con RSA PSS
+            startTime = System.nanoTime();
+            signature = signerRSAPSS.sign(vector3);
+            endTime = System.nanoTime();
+            timeSInterval9 = endTime-startTime;
+            isValid = signerRSAPSS.verify(vector3, signature);
+            System.out.println(isValid);  // Imprime "true"             
+
+            //Prueba firma cuarto vector
+            // Obtenemos la firma con RSA PSS
+            startTime = System.nanoTime();
+            signature = signerRSAPSS.sign(vector4);
+            endTime = System.nanoTime();
+            timeSInterval10 = endTime-startTime;
+            isValid = signerRSAPSS.verify(vector4, signature);
+            System.out.println(isValid);  // Imprime "true"             
+            
+            //Prueba firma quinto vector
+            // Obtenemos la firma con RSA PSS
+            startTime = System.nanoTime();
+            signature = signerRSAPSS.sign(vector5);
+            endTime = System.nanoTime();
+            timeSInterval11 = endTime-startTime;
+            isValid = signerRSAPSS.verify(vector5, signature);
+            System.out.println(isValid);  // Imprime "true"            
+            
+            //Prueba firma sexto vector
+            // Obtenemos la firma con RSA PSS
+            startTime = System.nanoTime();
+            signature = signerRSAPSS.sign(vector6);
+            endTime = System.nanoTime();
+            timeSInterval12 = endTime-startTime;
+            isValid = signerRSAPSS.verify(vector6, signature);
+            System.out.println(isValid);  // Imprime "true" 
+            
+            signerRSAPSS.deleteBCProvider();
             
             /*
             ####################################################
@@ -60,61 +127,61 @@ public class SignComparation {
             ####################################################
             */
                        
-            ECDSAPrimeFieldSignature signer = new ECDSAPrimeFieldSignature();
-            String signature = null;
-            boolean isValid = false;
+            ECDSAPrimeFieldSignature signerPrime = new ECDSAPrimeFieldSignature();
+            signature = null;
+            isValid = false;
             //Prueba firma primer vector
             // Obtenemos la firma con ECDSA Prime Field
             startTime = System.nanoTime();
-            signature = signer.sign(vector1);
+            signature = signerPrime.sign(vector1);
             endTime = System.nanoTime();
             timeSInterval13 = endTime-startTime;
-            isValid = signer.verify(vector1, signature);
+            isValid = signerPrime.verify(vector1, signature);
             System.out.println(isValid);  // Imprime "true" 
             
             //Prueba firma segundo vector
             // Obtenemos la firma con ECDSA Prime Field
             startTime = System.nanoTime();
-            signature = signer.sign(vector2);
+            signature = signerPrime.sign(vector2);
             endTime = System.nanoTime();
             timeSInterval14 = endTime-startTime;
-            isValid = signer.verify(vector2, signature);
+            isValid = signerPrime.verify(vector2, signature);
             System.out.println(isValid);  // Imprime "true" 
                         
             //Prueba firma tercer vector
             // Obtenemos la firma con ECDSA Prime Field
             startTime = System.nanoTime();
-            signature = signer.sign(vector3);
+            signature = signerPrime.sign(vector3);
             endTime = System.nanoTime();
             timeSInterval15 = endTime-startTime;
-            isValid = signer.verify(vector3, signature);
+            isValid = signerPrime.verify(vector3, signature);
             System.out.println(isValid);  // Imprime "true"
 
             //Prueba firma cuarto vector
             // Obtenemos la firma con ECDSA Prime Field
             startTime = System.nanoTime();
-            signature = signer.sign(vector4);
+            signature = signerPrime.sign(vector4);
             endTime = System.nanoTime();
             timeSInterval16 = endTime-startTime;
-            isValid = signer.verify(vector4, signature);
+            isValid = signerPrime.verify(vector4, signature);
             System.out.println(isValid);  // Imprime "true"
 
             //Prueba firma quinto vector
             // Obtenemos la firma con ECDSA Prime Field
             startTime = System.nanoTime();
-            signature = signer.sign(vector5);
+            signature = signerPrime.sign(vector5);
             endTime = System.nanoTime();
             timeSInterval17 = endTime-startTime;
-            isValid = signer.verify(vector5, signature);
+            isValid = signerPrime.verify(vector5, signature);
             System.out.println(isValid);  // Imprime "true"
 
             //Prueba firma sexto vector
             // Obtenemos la firma con ECDSA Prime Field
             startTime = System.nanoTime();
-            signature = signer.sign(vector6);
+            signature = signerPrime.sign(vector6);
             endTime = System.nanoTime();
             timeSInterval18 = endTime-startTime;
-            isValid = signer.verify(vector6, signature);
+            isValid = signerPrime.verify(vector6, signature);
             System.out.println(isValid);  // Imprime "true"
                         
             
@@ -125,70 +192,72 @@ public class SignComparation {
             ####################################################
             */
                        
-            signer = new ECDSAPrimeFieldSignature();
+            ECDSABinaryFieldSignature signerBinary = new ECDSABinaryFieldSignature();
             signature = null;
             isValid = false;
             //Prueba firma primer vector
             // Obtenemos la firma con ECDSA Binary Field
             startTime = System.nanoTime();
-            signature = signer.sign(vector1);
+            signature = signerBinary.sign(vector1);
             endTime = System.nanoTime();
             timeSInterval19 = endTime-startTime;
-            isValid = signer.verify(vector1, signature);
+            isValid = signerBinary.verify(vector1, signature);
             System.out.println(isValid);  // Imprime "true" 
             
             //Prueba firma segundo vector
             // Obtenemos la firma con ECDSA Binary Field
             startTime = System.nanoTime();
-            signature = signer.sign(vector2);
+            signature = signerBinary.sign(vector2);
             endTime = System.nanoTime();
             timeSInterval20 = endTime-startTime;
-            isValid = signer.verify(vector2, signature);
+            isValid = signerBinary.verify(vector2, signature);
             System.out.println(isValid);  // Imprime "true" 
                         
             //Prueba firma tercer vector
             // Obtenemos la firma con ECDSA Binary Field
             startTime = System.nanoTime();
-            signature = signer.sign(vector3);
+            signature = signerBinary.sign(vector3);
             endTime = System.nanoTime();
             timeSInterval21 = endTime-startTime;
-            isValid = signer.verify(vector3, signature);
+            isValid = signerBinary.verify(vector3, signature);
             System.out.println(isValid);  // Imprime "true"
 
             //Prueba firma cuarto vector
             // Obtenemos la firma con ECDSA Binary Field
             startTime = System.nanoTime();
-            signature = signer.sign(vector4);
+            signature = signerBinary.sign(vector4);
             endTime = System.nanoTime();
             timeSInterval22 = endTime-startTime;
-            isValid = signer.verify(vector4, signature);
+            isValid = signerBinary.verify(vector4, signature);
             System.out.println(isValid);  // Imprime "true"
 
             //Prueba firma quinto vector
             // Obtenemos la firma con ECDSA Binary Field
             startTime = System.nanoTime();
-            signature = signer.sign(vector5);
+            signature = signerBinary.sign(vector5);
             endTime = System.nanoTime();
             timeSInterval23 = endTime-startTime;
-            isValid = signer.verify(vector5, signature);
+            isValid = signerBinary.verify(vector5, signature);
             System.out.println(isValid);  // Imprime "true"
 
             //Prueba firma sexto vector
             // Obtenemos la firma con ECDSA Binary Field
             startTime = System.nanoTime();
-            signature = signer.sign(vector6);
+            signature = signerBinary.sign(vector6);
             endTime = System.nanoTime();
             timeSInterval24 = endTime-startTime;
-            isValid = signer.verify(vector6, signature);
+            isValid = signerBinary.verify(vector6, signature);
             System.out.println(isValid);  // Imprime "true"
+            
+            signerBinary.deleteBCProvider();
 
             //Resultados firma
-            SignTable.registros.add(new SignRegistro("Vector 1", timeSInterval13,timeSInterval19));
-            SignTable.registros.add(new SignRegistro("Vector 2", timeSInterval14,timeSInterval20));
-            SignTable.registros.add(new SignRegistro("Vector 3", timeSInterval15,timeSInterval21));
-            SignTable.registros.add(new SignRegistro("Vector 4", timeSInterval16,timeSInterval22));
-            SignTable.registros.add(new SignRegistro("Vector 5", timeSInterval17,timeSInterval23));
-            SignTable.registros.add(new SignRegistro("Vector 6", timeSInterval18,timeSInterval24));
+            SignTable.registros.add(new SignRegistro("Vector 1",timeSInterval7,timeSInterval13,timeSInterval19));
+            SignTable.registros.add(new SignRegistro("Vector 2",timeSInterval8,timeSInterval14,timeSInterval20));
+            SignTable.registros.add(new SignRegistro("Vector 3",timeSInterval9,timeSInterval15,timeSInterval21));
+            SignTable.registros.add(new SignRegistro("Vector 4",timeSInterval10,timeSInterval16,timeSInterval22));
+            SignTable.registros.add(new SignRegistro("Vector 5",timeSInterval11,timeSInterval17,timeSInterval23));
+            SignTable.registros.add(new SignRegistro("Vector 6",timeSInterval12,timeSInterval18,timeSInterval24));
             SignTable.printTable("Signing runtime");
             SignTable.registros.clear();            
             
