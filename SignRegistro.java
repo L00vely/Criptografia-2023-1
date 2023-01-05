@@ -16,31 +16,10 @@ public class SignRegistro {
     long timeECDSA_PF = 0;
     long timeECDSA_BF = 0;    
 
-    public SignRegistro(String vector, long timeRSA_OAEP,long timeRSA_PSS,long timeECDSA_PF,long timeECDSA_BF) {
-        this.vector = vector;
-        this.timeRSA_OAEP = timeRSA_OAEP;
-        this.timeRSA_PSS = timeRSA_PSS;
-        this.timeECDSA_PF = timeECDSA_PF;
-        this.timeECDSA_BF = timeECDSA_BF;
-    }
-
-
-    public SignRegistro(String vector, long timeECDSA_PF) {
-        this.vector = vector;
-        this.timeECDSA_PF = timeECDSA_PF;
-    }
-    
-    public SignRegistro(String vector, long timeECDSA_PF, long timeECDSA_BF) {
-        this.vector = vector;
-        this.timeECDSA_PF = timeECDSA_PF;
-        this.timeECDSA_BF = timeECDSA_BF;
-    }    
-    
-    public SignRegistro(String vector, long timeRSA_PSS , long timeECDSA_PF, long timeECDSA_BF) {
+    public SignRegistro(String vector,long timeRSA_PSS,long timeECDSA_PF,long timeECDSA_BF) {
         this.vector = vector;
         this.timeRSA_PSS = timeRSA_PSS;
         this.timeECDSA_PF = timeECDSA_PF;
         this.timeECDSA_BF = timeECDSA_BF;
-    }            
-    
+    }
 }

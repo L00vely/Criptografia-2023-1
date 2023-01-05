@@ -26,12 +26,6 @@ public class SignComparation {
             //Definición de variables para medir el tiempo
             long startTime; //variable para almacenar el tiempo inicial
             long endTime; //variable para almacenar el tiempo final
-            long timeSInterval1; //variable para almacenar la diferencia de tiempo de firma
-            long timeSInterval2; //variable para almacenar la diferencia de tiempo de firma
-            long timeSInterval3; //variable para almacenar la diferencia de tiempo de firma
-            long timeSInterval4; //variable para almacenar la diferencia de tiempo de firma
-            long timeSInterval5; //variable para almacenar la diferencia de tiempo de firma
-            long timeSInterval6; //variable para almacenar la diferencia de tiempo de firma
             long timeSInterval7; //variable para almacenar la diferencia de tiempo de firma
             long timeSInterval8; //variable para almacenar la diferencia de tiempo de firma
             long timeSInterval9; //variable para almacenar la diferencia de tiempo de firma
@@ -53,7 +47,6 @@ public class SignComparation {
             long timeSInterval24; //variable para almacenar la diferencia de tiempo de firma
                         
                         
-            
             /*
             ####################################################
             #                     RSA_PSS                      #

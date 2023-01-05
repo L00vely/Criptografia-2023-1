@@ -44,6 +44,15 @@ public class EDComparation {
             long timeCInterval16; //variable para almacenar la diferencia de tiempo de cifrado
             long timeCInterval17; //variable para almacenar la diferencia de tiempo de cifrado
             long timeCInterval18; //variable para almacenar la diferencia de tiempo de cifrado
+            long timeCInterval19; //variable para almacenar la diferencia de tiempo de cifrado
+            long timeCInterval20; //variable para almacenar la diferencia de tiempo de cifrado
+            long timeCInterval21; //variable para almacenar la diferencia de tiempo de cifrado
+            long timeCInterval22; //variable para almacenar la diferencia de tiempo de cifrado
+            long timeCInterval23; //variable para almacenar la diferencia de tiempo de cifrado
+            long timeCInterval24; //variable para almacenar la diferencia de tiempo de cifrado
+          
+
+
             long timeDInterval1; //variable para almacenar la diferencia de tiempo de descifrado
             long timeDInterval2; //variable para almacenar la diferencia de tiempo de descifrado
             long timeDInterval3; //variable para almacenar la diferencia de tiempo de descifrado
@@ -62,6 +71,14 @@ public class EDComparation {
             long timeDInterval16; //variable para almacenar la diferencia de tiempo de descifrado
             long timeDInterval17; //variable para almacenar la diferencia de tiempo de descifrado
             long timeDInterval18; //variable para almacenar la diferencia de tiempo de descifrado
+            long timeDInterval19; //variable para almacenar la diferencia de tiempo de descifrado
+            long timeDInterval20; //variable para almacenar la diferencia de tiempo de descifrado
+            long timeDInterval21; //variable para almacenar la diferencia de tiempo de descifrado
+            long timeDInterval22; //variable para almacenar la diferencia de tiempo de descifrado
+            long timeDInterval23; //variable para almacenar la diferencia de tiempo de descifrado
+            long timeDInterval24; //variable para almacenar la diferencia de tiempo de descifrado
+          
+
             
             //Definición de variables para cifrado y descifrado.
             Key key; //variable para la llave.
@@ -74,6 +91,8 @@ public class EDComparation {
             byte[] ciphertext5; //variable para almacenar el texto cifrado.
             byte[] ciphertext6; //variable para almacenar el texto cifrado.
             byte[] decryptedBytes; //variable para almacenar el texto descifrado en bytes.
+            
+            RSA_OAEP rsa_oaep = new RSA_OAEP();
             
             //Registros para la tabla
             ArrayList<EDRegistro> registros= new ArrayList<>();
@@ -361,18 +380,8 @@ public class EDComparation {
             endTime = System.nanoTime();
             timeCInterval18 = endTime-startTime;
             //System.out.println("Tiempo de cifrado vector 6: " + timeCInterval6 + " [ns]");             
-            
-            //Resultados Cifrado
-            EDTable.registros.add(new EDRegistro("Vector 1", timeCInterval1, timeCInterval7, timeCInterval13));
-            EDTable.registros.add(new EDRegistro("Vector 2", timeCInterval2, timeCInterval8, timeCInterval14));
-            EDTable.registros.add(new EDRegistro("Vector 3", timeCInterval3, timeCInterval9, timeCInterval15));
-            EDTable.registros.add(new EDRegistro("Vector 4", timeCInterval4, timeCInterval10, timeCInterval16));
-            EDTable.registros.add(new EDRegistro("Vector 5", timeCInterval5, timeCInterval11, timeCInterval17));
-            EDTable.registros.add(new EDRegistro("Vector 6", timeCInterval6, timeCInterval12, timeCInterval18));
-            EDTable.printTable("Encryption time");
-            EDTable.registros.clear();
-            
-            //Prueba descifrado primer vector
+;
+             //Prueba descifrado primer vector
             // Descifra el texto utilizando la clave y el IV
             startTime = System.nanoTime();
             decryptedBytes = AESCBC.decrypt(key, ciphertext1, iv);
@@ -392,7 +401,7 @@ public class EDComparation {
             decryptedBytes = AESCBC.decrypt(key, ciphertext3, iv);
             endTime = System.nanoTime();
             timeDInterval15 = endTime-startTime;
-;   
+
             //Prueba descifrado cuarto vector
             // Descifra el texto utilizando la clave y el IV
             startTime = System.nanoTime();
@@ -413,14 +422,107 @@ public class EDComparation {
             decryptedBytes = AESCBC.decrypt(key, ciphertext6, iv);
             endTime = System.nanoTime();
             timeDInterval18 = endTime-startTime;
+
+            /*
+            ####################################################
+            #                     RSA_OAEP                     #
+            #                                                  #
+            ####################################################
+            */       
+
+            //Prueba cifrado primer vector
+            plaintextBytes = vector1.getBytes("UTF-8");
+            // Cifra el texto utilizando la clave
+            startTime = System.nanoTime();
+            ciphertext1 = rsa_oaep.encrypt(plaintextBytes);
+            endTime = System.nanoTime();
+            timeCInterval19 = endTime-startTime;
+            //System.out.println("Tiempo de cifrado vector 1: " + timeCInterval1 + " [ns]");
+            
+            //Prueba cifrado segundo vector
+            plaintextBytes = vector2.getBytes("UTF-8");
+            // Cifra el texto utilizando la clave
+            startTime = System.nanoTime();
+            ciphertext2 = rsa_oaep.encrypt(plaintextBytes);
+            endTime = System.nanoTime();
+            timeCInterval20 = endTime-startTime;
+            //System.out.println("Tiempo de cifrado vector 2: " + timeCInterval1 + " [ns]");
+
+            //Prueba cifrado tercer vector
+            plaintextBytes = vector3.getBytes("UTF-8");
+            // Cifra el texto utilizando la clave
+            startTime = System.nanoTime();
+            ciphertext3 = rsa_oaep.encrypt(plaintextBytes);
+            endTime = System.nanoTime();
+            timeCInterval21 = endTime-startTime;
+            //System.out.println("Tiempo de cifrado vector 3: " + timeCInterval1 + " [ns]");
+
+            //Prueba cifrado cuarto vector
+            plaintextBytes = vector4.getBytes("UTF-8");
+            // Cifra el texto utilizando la clave
+            startTime = System.nanoTime();
+            ciphertext4 = rsa_oaep.encrypt(plaintextBytes);
+            endTime = System.nanoTime();
+            timeCInterval22 = endTime-startTime;
+            //System.out.println("Tiempo de cifrado vector 4: " + timeCInterval1 + " [ns]");
+
+            timeCInterval23 = 0;
+
+            timeCInterval24 = 0;
+
+            //Prueba descifrado primer vector
+            // Descifra el texto utilizando la clave
+            startTime = System.nanoTime();
+            ciphertext1 = rsa_oaep.decrypt(ciphertext1);
+            endTime = System.nanoTime();
+            timeDInterval19 = endTime-startTime;
+            //System.out.println("Tiempo de descifrado vector 1: " + timeCInterval1 + " [ns]");
+
+            //Prueba descifrado segundo vector
+            // Descifra el texto utilizando la clave
+            startTime = System.nanoTime();
+            ciphertext2 = rsa_oaep.decrypt(ciphertext2);
+            endTime = System.nanoTime();
+            timeDInterval20 = endTime-startTime;
+            //System.out.println("Tiempo de descifrado vector 2: " + timeCInterval1 + " [ns]");
+
+            //Prueba descifrado tercer vector
+            // Descifra el texto utilizando la clave
+            startTime = System.nanoTime();
+            ciphertext3 = rsa_oaep.decrypt(ciphertext3);
+            endTime = System.nanoTime();
+            timeDInterval21 = endTime-startTime;
+            //System.out.println("Tiempo de descifrado vector 3: " + timeCInterval1 + " [ns]");
+
+            //Prueba descifrado cuarto vector
+            // Descifra el texto utilizando la clave
+            startTime = System.nanoTime();
+            ciphertext4 = rsa_oaep.decrypt(ciphertext4);
+            endTime = System.nanoTime();
+            timeDInterval22 = endTime-startTime;
+            //System.out.println("Tiempo de descifrado vector 4: " + timeCInterval1 + " [ns]");
+
+            timeDInterval23 = 0;
+
+            timeDInterval24 = 0;
+
+            //Resultados Cifrado
+            EDTable.registros.add(new EDRegistro("Vector 1", timeCInterval1, timeCInterval7, timeCInterval13,timeCInterval19));
+            EDTable.registros.add(new EDRegistro("Vector 2", timeCInterval2, timeCInterval8, timeCInterval14,timeCInterval20));
+            EDTable.registros.add(new EDRegistro("Vector 3", timeCInterval3, timeCInterval9, timeCInterval15,timeCInterval21));
+            EDTable.registros.add(new EDRegistro("Vector 4", timeCInterval4, timeCInterval10,timeCInterval16,timeCInterval22));
+            EDTable.registros.add(new EDRegistro("Vector 5", timeCInterval5, timeCInterval11,timeCInterval17,timeCInterval23));
+            EDTable.registros.add(new EDRegistro("Vector 6", timeCInterval6, timeCInterval12,timeCInterval18,timeCInterval24));
+            EDTable.printTable("Encryption time");
+            EDTable.registros.clear();
             
             //Resultados Descifrado            
-            EDTable.registros.add(new EDRegistro("Vector 1", timeDInterval1, timeDInterval7, timeDInterval13));
-            EDTable.registros.add(new EDRegistro("Vector 2", timeDInterval2, timeDInterval8, timeDInterval14));
-            EDTable.registros.add(new EDRegistro("Vector 3", timeDInterval3, timeDInterval9, timeDInterval15));
-            EDTable.registros.add(new EDRegistro("Vector 4", timeDInterval4, timeDInterval10, timeDInterval16));
-            EDTable.registros.add(new EDRegistro("Vector 5", timeDInterval5, timeDInterval11, timeDInterval17));
-            EDTable.registros.add(new EDRegistro("Vector 6", timeDInterval6, timeDInterval12, timeDInterval18));
+            EDTable.registros.add(new EDRegistro("Vector 1", timeDInterval1, timeDInterval7, timeDInterval13,timeDInterval19));
+            EDTable.registros.add(new EDRegistro("Vector 2", timeDInterval2, timeDInterval8, timeDInterval14,timeDInterval20));
+            EDTable.registros.add(new EDRegistro("Vector 3", timeDInterval3, timeDInterval9, timeDInterval15,timeDInterval21));
+            EDTable.registros.add(new EDRegistro("Vector 4", timeDInterval4, timeDInterval10,timeDInterval16,timeDInterval22));
+            EDTable.registros.add(new EDRegistro("Vector 5", timeDInterval5, timeDInterval11,timeDInterval17,timeDInterval23));
+            EDTable.registros.add(new EDRegistro("Vector 6", timeDInterval6, timeDInterval12,timeDInterval18,timeDInterval24));
             EDTable.printTable("Decryption time");
             EDTable.registros.clear();
         } catch (Exception e){

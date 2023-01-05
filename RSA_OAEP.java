@@ -19,7 +19,7 @@ import javax.crypto.spec.PSource;
 
 /**
  *
- * @author JEREMY
+ * @author OCTAVIO
  */
 public class RSA_OAEP {
     private KeyPair keyPair;

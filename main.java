@@ -39,6 +39,7 @@ public class main {
                 break;
             case 3:
                 System.out.println("Signing algorithms");
+                SignComparation.compareSign();
                 break;
             case 4:
                 System.out.println("Finishing...");
@@ -52,6 +53,5 @@ public class main {
         scanner.close();
        
     }
-
     
 }
